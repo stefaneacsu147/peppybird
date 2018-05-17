@@ -65,6 +65,11 @@ var mainState = {
             this.restartGame();
 
         game.physics.arcade.overlap(this.bird, this.pipes, this.hitPipe, null, this);
+
+        game.inputEnabled = true;
+        game.input.onDown.add(function () {
+            this.bird.body.gravity.y = 1000;  
+        }, this);
     },
 
     hitPipe: function () {
