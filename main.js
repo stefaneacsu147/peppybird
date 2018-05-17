@@ -15,6 +15,7 @@ var mainState = {
 
         var spaceKey = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
         spaceKey.onDown.add(this.jump, this);
+        spaceKey.events.onInputDown.add(this.jump, this);
 
         this.pipes = game.add.group();
         this.timer = game.time.events.loop(1500, this.addRowOfPipes, this);
@@ -97,9 +98,8 @@ var mainState = {
     }
 };
 
-
 // Initialize Phaser
-var game = new Phaser.Game(800, 600);
+var game = new Phaser.Game(800, 600, Phaser.AUTO);
 
 // Add the 'mainState' and call it 'main'
 game.state.add('main', mainState);
