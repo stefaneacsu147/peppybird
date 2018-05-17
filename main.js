@@ -13,9 +13,7 @@ var mainState = {
         game.physics.arcade.enable(this.bird);
         this.bird.body.gravity.y = 1000;
 
-        var spaceKey = game.input.keyboard.addKey(
-            Phaser.Keyboard.SPACEBAR);
-        spaceKey.onDown.add(this.jump, this);
+        this.input.onDown.add(this.jump, this);
         this.pipes = game.add.group();
         this.timer = game.time.events.loop(1500, this.addRowOfPipes, this);
 
