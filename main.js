@@ -13,8 +13,9 @@ var mainState = {
         game.physics.arcade.enable(this.bird);
         this.bird.body.gravity.y = 1000;
 
-        var spaceKey = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
-        spaceKey.input.onDown.add(this.jump, this);
+        var spaceKey = game.input.keyboard.addKey(
+            Phaser.Keyboard.SPACEBAR);
+        spaceKey.onDown.add(this.jump, this);
 
         this.pipes = game.add.group();
         this.timer = game.time.events.loop(1500, this.addRowOfPipes, this);
@@ -67,7 +68,7 @@ var mainState = {
 
         game.inputEnabled = true;
         game.input.onDown.add(function () {
-            this.bird.body.gravity.y = 1000;  
+            this.bird.body.gravity.y = 1000;
         }, this);
     },
 
@@ -87,13 +88,13 @@ var mainState = {
         if (this.bird.alive == false)
             return;
         this.bird.body.velocity.y = -350;
-        this.jumpSound.play();
 
         var animation = game.add.tween(this.bird);
         animation.to({
             angle: -20
         }, 50);
         animation.start();
+        this.jumpSound.play();
 
     },
 
